@@ -474,7 +474,7 @@ class _MainScreenState extends State<MainScreen> {
               newGoogleMapController = controller;
 
               setState(() {
-                bottomPaddingOfMap = 270;
+                bottomPaddingOfMap = 300;
               });
 
               locateUserPosition();
@@ -557,7 +557,7 @@ class _MainScreenState extends State<MainScreen> {
 
           //ui for searching location
           Positioned(
-            height: MediaQuery.of(context).size.height * 0.3,
+            height: MediaQuery.of(context).size.height * 0.35,
             left: 0.0,
             right: 0.0,
             bottom: 0.0,
@@ -650,43 +650,92 @@ class _MainScreenState extends State<MainScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 24.0),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.home,
-                            color: Colors.black87,
-                          ),
-                          const SizedBox(
-                            width: 12.0,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                "Home address",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16.0,
-                                    fontFamily: "Brand-Regular"),
-                              ),
-                              const SizedBox(
-                                height: 4.0,
-                              ),
-                              Text(
-                                Provider.of<AppInfo>(context)
-                                            .userPickUpLocation !=
-                                        null
-                                    ? "${Provider.of<AppInfo>(context).userPickUpLocation!.locationName!} ..."
-                                    : "Add Home",
-                                style: const TextStyle(
-                                    color: Colors.black54,
-                                    fontSize: 12,
-                                    fontFamily: "Brand-Regular"),
-                              ),
-                            ],
-                          ),
-                        ],
+                      const SizedBox(height: 12.0),
+                      Text(
+                        "Favorites",
+                        style:
+                            TextStyle(fontFamily: "Brand-bold", fontSize: 15),
+                      ),
+                      const SizedBox(height: 12.0),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(15),
+                                  width: 60,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.shade200,
+                                      borderRadius: BorderRadius.circular(50)),
+                                  child: Column(
+                                    children: [
+                                      Icon(
+                                        Ionicons.home_outline,
+                                        size: 27,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Text(
+                                  "Home",
+                                  style: TextStyle(fontFamily: "Brand-bold"),
+                                )
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(15),
+                                  width: 60,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.shade200,
+                                      borderRadius: BorderRadius.circular(50)),
+                                  child: Column(
+                                    children: [
+                                      Icon(
+                                        Ionicons.briefcase_outline,
+                                        size: 30,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Text(
+                                  "Favorite 1",
+                                  style: TextStyle(fontFamily: "Brand-bold"),
+                                )
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(15),
+                                  width: 60,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.shade200,
+                                      borderRadius: BorderRadius.circular(50)),
+                                  child: Column(
+                                    children: [
+                                      Icon(
+                                        Ionicons.location_outline,
+                                        size: 30,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Text(
+                                  "Favorite 2",
+                                  style: TextStyle(fontFamily: "Brand-bold"),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                       const SizedBox(height: 18.0),
                     ],
