@@ -1,9 +1,8 @@
-import 'dart:math';
-
+import 'package:boride/mainScreens/main_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ionicons/ionicons.dart';
-import '../splashScreen/splash_screen.dart';
 
 class EditPage extends StatefulWidget {
   const EditPage({Key? key}) : super(key: key);
@@ -13,125 +12,166 @@ class EditPage extends StatefulWidget {
 }
 
 class _EditPageState extends State<EditPage> {
+  String fullName = "";
+  String email = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: new IconButton(
-          icon: new Icon(Icons.arrow_back, color: Colors.black),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.white,
         shadowColor: Colors.transparent,
-        title: Text(
-          "Edit Page",
-          style: TextStyle(color: Colors.black, fontFamily: "Brand-regular"),
+        title: const Text(
+          "Edit Information",
+          style: TextStyle(color: Colors.black, fontFamily: "Brand-Regular"),
         ),
       ),
       body: Center(
-        child: Column(
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  Container(
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Container(
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Color.fromARGB(255, 240, 239, 242),
-                                      blurRadius: 1.5,
-                                      spreadRadius: 5.5),
-                                ]),
-                            child: Icon(
-                              Icons.person_rounded,
-                              color: Colors.grey.shade600,
-                              size: 80,
-                            )),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Container(
-                          margin: EdgeInsets.all(12),
-                          height: 55,
-                          width: 350,
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 243, 245, 247),
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: TextFormField(
-                              inputFormatters: [
-                                LengthLimitingTextInputFormatter(null)
-                              ],
-                              decoration: const InputDecoration(
-                                hintText: "Full Name",
-                                hintStyle:
-                                    TextStyle(fontFamily: "Brand-Regular"),
-                                labelStyle:
-                                    TextStyle(fontFamily: "Brand-Regular"),
-                                // prefixIcon: Icon(Icons.person),
-                                border: InputBorder.none,
-                              ),
-                            ),
+        child: Padding(
+          padding: EdgeInsets.only(
+              left: MediaQuery.of(context).size.width * 0.02,
+              right: MediaQuery.of(context).size.width * 0.02,
+              top: MediaQuery.of(context).size.height * 0.03),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 30,
+              ),
+              const Text(
+                "Enter Your New Full Name and or Email to Update your Information",
+                style: TextStyle(
+                    fontFamily: "Brand-Bold",
+                    fontSize: 15,
+                    color: Colors.black87),
+              ),
+              Expanded(
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 25,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10),
+                      height: 55,
+                      width: 350,
+                      decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 243, 245, 247),
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: TextFormField(
+                          keyboardType: TextInputType.name,
+                          textCapitalization: TextCapitalization.words,
+                          onChanged: (value) {
+                            setState(() {
+                              fullName = value;
+                            });
+                          },
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(null)
+                          ],
+                          decoration: const InputDecoration(
+                            hintText: "Full Name",
+                            hintStyle: TextStyle(fontFamily: "Brand-Regular"),
+                            labelStyle: TextStyle(fontFamily: "Brand-Regular"),
+                            // prefixIcon: Icon(Icons.person),
+                            border: InputBorder.none,
                           ),
                         ),
-                        Container(
-                          margin: EdgeInsets.all(12),
-                          height: 55,
-                          width: 350,
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 243, 245, 247),
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: TextFormField(
-                              decoration: const InputDecoration(
-                                hintText: "Phone Number",
-                                hintStyle:
-                                    TextStyle(fontFamily: "Brand-Regular"),
-                                //  prefixIcon: Icon(Icons.person),
-                                border: InputBorder.none,
-                              ),
-                            ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.all(12),
+                      height: 55,
+                      width: 350,
+                      decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 243, 245, 247),
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          textCapitalization: TextCapitalization.words,
+                          onChanged: (value) {
+                            setState(() {
+                              email = value;
+                            });
+                          },
+                          decoration: const InputDecoration(
+                            hintText: "Email",
+                            hintStyle: TextStyle(fontFamily: "Brand-Regular"),
+                            //  prefixIcon: Icon(Icons.person),
+                            border: InputBorder.none,
                           ),
                         ),
-                        Container(
-                          width: 370,
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Text(
-                              "Your Phone Number Cant Be Changed, If You Want To Link Your Account To another Phone Number, contact Customer Support.",
-                              style: TextStyle(
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 370,
+                      child: Padding(
+                        padding: EdgeInsets.all(15.0),
+                        child: Center(
+                          child: Text(
+                            "Your Phone Number Cant Be Changed, If You Want To Link Your Account To another Phone Number, contact Customer Support.",
+                            style: TextStyle(
                                 fontFamily: "Brand-Regular",
                                 fontSize: 12,
-                              ),
-                            ),
+                                color: Colors.black54),
                           ),
-                        )
-                      ],
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                    const Spacer(),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).size.height * 0.2),
+                      child: ElevatedButton(
+                          onPressed: () async {
+                            updateProfile();
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.indigo,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10))),
+                          child: const Text(
+                            "Submit",
+                            style: TextStyle(
+                                fontFamily: "Brand-Bold",
+                                fontWeight: FontWeight.bold),
+                          )),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                margin: EdgeInsets.all(10),
-                child: Text("Developed By UTech"),
-              ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  updateProfile() {
+    Map profileMap = {
+      "id": FirebaseAuth.instance.currentUser!.uid,
+      "name": fullName,
+      "email": email,
+      "phone": FirebaseAuth.instance.currentUser!.phoneNumber,
+    };
+
+    DatabaseReference profileRef = FirebaseDatabase.instance
+        .ref()
+        .child("users")
+        .child(FirebaseAuth.instance.currentUser!.uid);
+    profileRef.set(profileMap);
+
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const MainScreen()));
   }
 }
