@@ -3,361 +3,434 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:boride/brand_colors.dart';
 
-import '../brand_colors.dart';
 import 'edit_page.dart';
 
-class ProfileTest extends StatefulWidget {
-  const ProfileTest({Key? key}) : super(key: key);
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
-  State<ProfileTest> createState() => _ProfileTestState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ProfileTestState extends State<ProfileTest> {
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         shadowColor: Colors.transparent,
-        title: Text(
-          "Profile",
-          style: TextStyle(color: Colors.black),
+        title: const Text(
+          "Profile Page",
+          style: TextStyle(fontFamily: "Brand-bold", color: Colors.black),
         ),
       ),
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(50),
-                            bottomRight: Radius.circular(50))),
-                    width: 400,
-                    height: 370,
-                    child: Column(children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.height * 0.02,
-                            left: MediaQuery.of(context).size.width * 0.02,
-                            right: MediaQuery.of(context).size.width * 0.02),
-                      ),
-                      Row(
+      body: ListView(
+        children: [
+          Column(children: [
+            Padding(
+              padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.0,
+                  left: MediaQuery.of(context).size.width * 0.02,
+                  right: MediaQuery.of(context).size.width * 0.02),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Column(
-                            children: [
-                              IconButton(
-                                icon: const Icon(Icons.person_rounded),
-                                color: Colors.grey[400],
-                                iconSize: 45,
-                                onPressed: () {},
-                              ),
-                            ],
+                          //name
+                          Center(
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 70,
+                                  width: 70,
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.shade100,
+                                      borderRadius: BorderRadius.circular(50)),
+                                  child: IconButton(
+                                    icon: const Icon(Icons.person_rounded),
+                                    color: Colors.grey[400],
+                                    iconSize: 45,
+                                    onPressed: () {},
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Text(
+                                  "Ahmad Umar",
+                                  style: TextStyle(
+                                    fontSize: 25.0,
+                                    fontFamily: "Brand-Regular",
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 3,
+                                ),
+                                const Text(
+                                  "08103249417",
+                                  style: TextStyle(
+                                    fontSize: 15.0,
+                                    fontFamily: "Brand-Regular",
+                                    color: Colors.black45,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 7,
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(width: 20),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+
+                          SizedBox(
+                            width: 385,
+                            child: Divider(
+                              color: Colors.grey.shade200,
+                              thickness: 5,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Row(
                             children: [
-                              Text(
-                                "Ahmad Umar",
-                                style: const TextStyle(
-                                  fontSize: 25.0,
-                                  fontFamily: "Brand-Regular",
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
+                              Container(
+                                  margin: const EdgeInsets.only(left: 18),
+                                  child: const Icon(Icons.email_outlined)),
+                              Container(
+                                margin: const EdgeInsets.only(left: 15),
+                                child: const Text("ahmadumar0110@gmail.com",
+                                    style: TextStyle(
+                                      fontFamily: "Brand-Regular",
+                                      fontSize: 16.0,
+                                      color: Colors.black54,
+                                      //fontWeight: FontWeight.bold,
+                                    )),
+                              ),
+                              const Spacer(),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5.0),
+                                child: SizedBox(
+                                  height: 30,
+                                  width: 75,
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.green,
+                                    ),
+                                    child: const Text(
+                                      "Verify",
+                                      style: TextStyle(
+                                          fontFamily: "Brand-Regular",
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
                           ),
-                        ],
-                      ),
-                      SizedBox(
-                          height: 10,
-                          width: 360,
-                          child: Divider(
-                            thickness: 1,
-                            color: Colors.black87,
-                          )),
-                      SizedBox(
-                        height: 25,
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                              margin: const EdgeInsets.only(
-                                left: 20,
-                              ),
-                              child: const Icon(
-                                Icons.email_outlined,
-                                color: Colors.black87,
-                              )),
-                          Container(
-                            margin: const EdgeInsets.only(left: 15),
-                            child: Text("Loading Data...",
-                                style: const TextStyle(
-                                  fontFamily: "Brand-Regular",
-                                  fontSize: 17.0,
-                                  color: Colors.black87,
-                                  //fontWeight: FontWeight.bold,
-                                )),
+                          const SizedBox(
+                            height: 5,
                           ),
-                          const Spacer(),
                           Padding(
-                            padding: const EdgeInsets.only(right: 20.0),
-                            child: SizedBox(
-                              height: 30,
-                              width: 75,
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.green,
-                                ),
-                                child: const Text(
-                                  "Verify",
-                                  style: TextStyle(
-                                      fontFamily: "Brand-Regular",
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                              margin: const EdgeInsets.only(left: 20),
-                              child: const Icon(
-                                Icons.phone_outlined,
-                                color: Colors.black87,
-                              )),
-                          Container(
-                            margin: const EdgeInsets.only(left: 15),
-                            child: Text("Loading Data...",
-                                style: const TextStyle(
-                                  fontFamily: "Brand-Regular",
-                                  fontSize: 17.0,
-                                  color: Colors.black,
-                                  //fontWeight: FontWeight.bold,
-                                )),
-                          ),
-                          const Spacer(),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.black12,
-                            borderRadius: BorderRadius.circular(20)),
-                        height: 6,
-                        width: 390,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(6),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.only(
-                                  left: 14.0, bottom: 10, top: 10),
-                              child: Text(
-                                "Favorite Places",
-                                style: TextStyle(
-                                  color: Colors.black87,
-                                  fontFamily: "Brand-Bold",
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Row(
-                                children: const [
-                                  Icon(
-                                    Icons.home_outlined,
-                                    size: 22,
-                                    color: Colors.black87,
-                                  ),
-                                  SizedBox(width: 15),
-                                  Text(
-                                    "Home",
+                            padding: const EdgeInsets.all(6),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 14.0, bottom: 10, top: 10),
+                                  child: Text(
+                                    "Favorite Places",
                                     style: TextStyle(
-                                      color: Colors.black87,
-                                      fontFamily: "Brand-Regular",
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w400,
+                                      fontFamily: "Brand-Bold",
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(0.0),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                          margin:
+                                              const EdgeInsets.only(left: 10),
+                                          child: const Icon(
+                                              Ionicons.home_outline)),
+                                      Container(
+                                        margin: const EdgeInsets.only(left: 15),
+                                        child: const Text("Home",
+                                            style: TextStyle(
+                                              fontFamily: "Brand-Regular",
+                                              fontSize: 16.0,
+                                              color: Colors.black,
+                                              //fontWeight: FontWeight.bold,
+                                            )),
+                                      ),
+                                      const Spacer(),
+                                      Padding(
+                                        padding: const EdgeInsets.all(2.0),
+                                        child: SizedBox(
+                                            height: 40,
+                                            width: 40,
+                                            child: GestureDetector(
+                                              child: Container(
+                                                  height: 40,
+                                                  width: 40,
+                                                  decoration: BoxDecoration(
+                                                      color:
+                                                          Colors.grey.shade100,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              50)),
+                                                  child: Icon(Ionicons.add)),
+                                              onTap: () {},
+                                            )),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(0.0),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                          margin:
+                                              const EdgeInsets.only(left: 10),
+                                          child: const Icon(
+                                              Ionicons.briefcase_outline)),
+                                      Container(
+                                        margin: const EdgeInsets.only(left: 15),
+                                        child: const Text("Work",
+                                            style: TextStyle(
+                                              fontFamily: "Brand-Regular",
+                                              fontSize: 16.0,
+                                              color: Colors.black,
+                                              //fontWeight: FontWeight.bold,
+                                            )),
+                                      ),
+                                      const Spacer(),
+                                      Padding(
+                                        padding: const EdgeInsets.all(2.0),
+                                        child: SizedBox(
+                                            height: 40,
+                                            width: 40,
+                                            child: GestureDetector(
+                                              child: Container(
+                                                  height: 40,
+                                                  width: 40,
+                                                  decoration: BoxDecoration(
+                                                      color:
+                                                          Colors.grey.shade100,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              50)),
+                                                  child: Icon(Ionicons.add)),
+                                              onTap: () {},
+                                            )),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(0.0),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                          margin:
+                                              const EdgeInsets.only(left: 10),
+                                          child: const Icon(
+                                              Ionicons.location_outline)),
+                                      Container(
+                                        margin: const EdgeInsets.only(left: 15),
+                                        child: const Text("Favorite",
+                                            style: TextStyle(
+                                              fontFamily: "Brand-Regular",
+                                              fontSize: 16.0,
+                                              color: Colors.black,
+                                              //fontWeight: FontWeight.bold,
+                                            )),
+                                      ),
+                                      const Spacer(),
+                                      Padding(
+                                        padding: const EdgeInsets.all(2.0),
+                                        child: SizedBox(
+                                            height: 40,
+                                            width: 40,
+                                            child: GestureDetector(
+                                              child: Container(
+                                                  height: 40,
+                                                  width: 40,
+                                                  decoration: BoxDecoration(
+                                                      color:
+                                                          Colors.grey.shade100,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              50)),
+                                                  child: Icon(Ionicons.add)),
+                                              onTap: () {},
+                                            )),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 370,
+                                  child: Divider(
+                                    thickness: 0.1,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01,
+                          ),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.3,
+                            decoration: BoxDecoration(
+                                color: Colors.grey.shade200,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 35),
+                              child: Column(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const EditPage()));
+                                    },
+                                    child: Container(
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 40),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 25),
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white70,
+                                          borderRadius:
+                                              BorderRadius.circular(20.0)),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: const [
+                                          Icon(Icons.edit),
+                                          SizedBox(width: 40),
+                                          Expanded(
+                                            child: Text(
+                                              'Edit ',
+                                              style: TextStyle(
+                                                fontFamily: "Brand-Regular",
+                                              ),
+                                            ),
+                                          ),
+                                          Spacer(),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 40),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 25),
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white70,
+                                        borderRadius:
+                                            BorderRadius.circular(20.0)),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: const [
+                                        Icon(Ionicons.log_out_outline),
+                                        SizedBox(width: 40),
+                                        Expanded(
+                                          child: Text(
+                                            'Logout',
+                                            style: TextStyle(
+                                              fontFamily: "Brand-Regular",
+                                            ),
+                                          ),
+                                        ),
+                                        Spacer(),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 40),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white70,
+                                        borderRadius:
+                                            BorderRadius.circular(20.0)),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: const [
+                                        Icon(
+                                          Ionicons.trash,
+                                          color: Colors.red,
+                                        ),
+                                        SizedBox(
+                                          width: 40,
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            'Delete Account',
+                                            style: TextStyle(
+                                              fontFamily: "Brand-Regular",
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                            const SizedBox(
-                              width: 370,
-                              child: Divider(
-                                thickness: 0.2,
-                                color: Colors.black,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Row(
-                                children: const [
-                                  Icon(
-                                    Icons.work_outline,
-                                    size: 22,
-                                    color: Colors.black87,
-                                  ),
-                                  SizedBox(width: 15),
-                                  Text(
-                                    "Work",
-                                    style: TextStyle(
-                                      color: Colors.black87,
-                                      fontFamily: "Brand-Regular",
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ]),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0,
-            ),
-            Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 50, horizontal: 10),
-                  height: 387,
-                  width: 395,
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(50)),
-                  child: Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => EditPage()));
-                        },
-                        child: Container(
-                          //margin: const EdgeInsets.symmetric(horizontal: 40),
-                          padding: const EdgeInsets.symmetric(horizontal: 25),
-                          height: 50,
-                          width: 450,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(40.0)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(Icons.edit),
-                              SizedBox(width: 40),
-                              Expanded(
-                                child: Text(
-                                  'Edit ',
-                                  style: TextStyle(
-                                    fontFamily: "Brand-Regular",
-                                  ),
-                                ),
-                              ),
-                              Spacer(),
-                            ],
                           ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.symmetric(horizontal: 40),
-                        padding: const EdgeInsets.symmetric(horizontal: 25),
-                        height: 50,
-                        width: 450,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(40.0)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Icon(Ionicons.log_out_outline),
-                            SizedBox(width: 40),
-                            Expanded(
-                              child: Text(
-                                'Logout',
-                                style: TextStyle(
-                                  fontFamily: "Brand-Regular",
-                                ),
-                              ),
-                            ),
-                            Spacer(),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.symmetric(horizontal: 40),
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        width: 450,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(40.0)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Icon(
-                              Ionicons.trash,
-                              color: Colors.red,
-                            ),
-                            SizedBox(
-                              width: 40,
-                            ),
-                            Expanded(
-                              child: Text(
-                                'Delete Account',
-                                style: TextStyle(
-                                  fontFamily: "Brand-Regular",
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+
+                          //phone
+                          //        InfoDesignUIWidget(
+                          //    textInfo: userModelCurrentInfo!.phone!,
+                          //    iconData: Icons.phone_iphone_rounded,
+                        ],
                       ),
                     ],
-                  ),
-                ),
-              ],
+                  )
+                ],
+              ),
             ),
-          ],
-        ),
+          ]),
+        ],
       ),
     );
   }
 }
-
