@@ -1,10 +1,18 @@
-import 'package:flutter/cupertino.dart';
+import 'package:boride/assistants/global.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:smooth_star_rating_nsafe/smooth_star_rating.dart';
 
-class TestUi extends StatelessWidget {
-  const TestUi({Key? key}) : super(key: key);
+class RateDriverScreen extends StatefulWidget {
+  String? assignedDriverId;
 
+  RateDriverScreen({Key? key, this.assignedDriverId}) : super(key: key);
+
+  @override
+  State<RateDriverScreen> createState() => _RateDriverScreenState();
+}
+
+class _RateDriverScreenState extends State<RateDriverScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
